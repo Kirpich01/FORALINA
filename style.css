@@ -1,0 +1,187 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:"Segoe UI",sans-serif;
+}
+
+body{
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:linear-gradient(
+        180deg,
+        #fffdfb 0%,
+        #fff7f2 50%,
+        #ffeee7 100%
+    );
+}
+
+/* Переключение в режим прокрутки для финального экрана */
+body.final-mode{
+    height:auto;
+    min-height:100vh;
+    overflow:auto;
+    align-items:flex-start;
+    padding:60px 20px;
+}
+
+.container{
+    margin-top:120px;
+
+    width:520px;
+    background:#ffffff;
+
+    border-radius:30px;
+    padding:30px;
+
+    text-align:center;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.08);
+
+    animation:fade .5s;
+}
+
+@keyframes fade{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.cat{
+    width:300px;
+    height:300px;
+    object-fit:cover;
+
+    display:block;
+    margin:0 auto 25px;
+
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,.12);
+}
+
+h1{
+    font-size:42px;
+    color:#ff5d8f;
+    margin-bottom:15px;
+}
+
+p{
+    font-size:25px;
+    color:#666;
+    margin-bottom:30px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+button{
+    width:170px;
+    height:60px;
+
+    border:none;
+    border-radius:16px;
+
+    cursor:pointer;
+
+    font-size:22px;
+    font-weight:bold;
+
+    transition:.25s;
+}
+
+#yesBtn{
+    background:#ff6b9b;
+    color:white;
+}
+
+#yesBtn:hover{
+    transform:scale(1.08);
+    box-shadow:0 10px 25px rgba(255,107,155,.4);
+}
+
+#noBtn{
+    background:#efefef;
+    color:#444;
+    position:relative;
+    transition: left .2s ease, top .2s ease, background .25s;
+}
+
+#noBtn:hover{
+    background:#e6e6e6;
+}
+
+/* ===== Финальная статья ===== */
+
+.container.article-mode{
+    width:700px;
+    max-width:90vw;
+    margin-top:0;
+    text-align:left;
+    padding:50px 40px;
+}
+
+.article-title{
+    font-size:38px;
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.article-row{
+    display:flex;
+    align-items:center;
+    gap:35px;
+    margin-bottom:50px;
+}
+
+/* нечётные блоки — фото слева, текст справа (по умолчанию) */
+/* чётные — разворачиваем через reverse */
+.article-row.reverse{
+    flex-direction:row-reverse;
+}
+
+.article-row img{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+    flex-shrink:0;
+}
+
+.article-row p{
+    font-size:19px;
+    line-height:1.8;
+    color:#555;
+    margin-bottom:0;
+    flex:1;
+    min-width:0;
+}
+
+@media (max-width: 650px){
+    .article-row,
+    .article-row.reverse{
+        flex-direction:column;
+    }
+    .article-row img{
+        width:180px;
+        height:180px;
+    }
+}
+
+.article-row.text-only p{
+    width:100%;
+}
